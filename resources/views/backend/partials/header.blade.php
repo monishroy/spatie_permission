@@ -1,43 +1,4 @@
-<!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-bs-theme="dark" data-body-image="img-1" data-preloader="disable">
-
-<head>
-
-    <meta charset="utf-8" />
-    <title>@yield('title') | Ecommerce</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ url('admin/assets/images/favicon.ico') }}">
-
-    <!-- jsvectormap css -->
-    <link href="{{ url('admin/assets/libs/jsvectormap/css/jsvectormap.min.cs') }}s" rel="stylesheet" type="text/css" />
-
-    <!--Swiper slider css-->
-    <link href="{{ url('admin/assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
-
-    <!-- Sweet Alert css-->
-    <link href="{{ url('admin/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- Layout config Js -->
-    <script src="{{ url('admin/assets/js/layout.js') }}"></script>
-    <!-- Bootstrap Css -->
-    <link href="{{ url('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- Icons Css -->
-    <link href="{{ url('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
-    <link href="{{ url('admin/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- custom Css-->
-    <link href="{{ url('admin/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
-
-</head>
-
-<body>
-    
-    <!-- Begin page -->
-    <div id="layout-wrapper">
-
-    <header id="page-topbar">
+<header id="page-topbar">
     <div class="layout-width">
         <div class="navbar-header">
             <div class="d-flex">
@@ -48,7 +9,7 @@
                             <img src="{{ url('admin/assets/images/logo-sm.png') }}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ url('admin/assets/images/logo-dark.png') }}" alt="" height="17">
+                            <img src="{{ url('admin/assets/images/logo-dark.png') }}" alt="" height="25">
                         </span>
                     </a>
 
@@ -57,7 +18,7 @@
                             <img src="{{ url('admin/assets/images/logo-sm.png') }}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ url('admin/assets/images/logo-light.png') }}" alt="" height="17">
+                            <img src="{{ url('admin/assets/images/logo-light.png') }}" alt="" height="25">
                         </span>
                     </a>
                 </div>
@@ -149,7 +110,6 @@
                                 </a>
                             </div>
                         </div>
-
                         <div class="text-center pt-3 pb-1">
                             <a href="pages-search-results.html" class="btn btn-primary btn-sm">View All Results <i class="ri-arrow-right-line ms-1"></i></a>
                         </div>
@@ -174,7 +134,7 @@
                         </form>
                     </div>
                 </div>
-
+                
                 <div class="dropdown topbar-head-dropdown ms-1 header-item">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class='bx bx-category-alt fs-22'></i>
@@ -243,13 +203,12 @@
                         <i class='bx bx-fullscreen fs-22'></i>
                     </button>
                 </div>
-
                 <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
                         <i class='bx bx-moon fs-22'></i>
                     </button>
                 </div>
-
+                {{-- Notification --}}
                 <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                         <i class='bx bx-bell fs-22'></i>
@@ -288,9 +247,7 @@
                                     </li>
                                 </ul>
                             </div>
-
                         </div>
-
                         <div class="tab-content position-relative" id="notificationItemsTabContent">
                             <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab" role="tabpanel">
                                 <div data-simplebar style="max-height: 300px;" class="pe-2">
@@ -513,7 +470,7 @@
                         </div>
                     </div>
                 </div>
-
+                {{-- Notification --}}
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
@@ -525,7 +482,7 @@
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <!-- item-->
+                        {{-- item --}}
                         <h6 class="dropdown-header">Welcome Anna!</h6>
                         <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
                         <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
@@ -540,140 +497,3 @@
         </div>
     </div>
 </header>
-
-        <!-- removeNotificationModal -->
-        <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mt-2 text-center">
-                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                            <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                                <h4>Are you sure ?</h4>
-                                <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!</button>
-                        </div>
-                    </div>
-
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        <!-- ========== App Menu ========== -->
-        <div class="app-menu navbar-menu">
-            <!-- LOGO -->
-            <div class="navbar-brand-box">
-                <!-- Dark Logo-->
-                <a href="{{ url('') }}" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="{{ url('admin/assets/images/logo-sm.png') }}" alt="" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="{{ url('admin/assets/images/logo-dark.png') }}" alt="" height="17">
-                    </span>
-                </a>
-                <!-- Light Logo-->
-                <a href="{{ url('') }}" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="{{ url('admin/assets/images/logo-sm.png') }}" alt="" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="{{ url('admin/assets/images/logo-light.png') }}" alt="" height="17">
-                    </span>
-                </a>
-                <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
-                    <i class="ri-record-circle-line"></i>
-                </button>
-            </div>
-
-            <div id="scrollbar">
-                <div class="container-fluid">
-
-                    <div id="two-column-menu">
-                    </div>
-                    <ul class="navbar-nav" id="navbar-nav">
-                        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link {{ Request::is('admin/dashboard') ? 'active':''}}" href="{{ route('backend.dashboard') }}">
-                                <i class="ri-dashboard-2-line"></i> <span data-key="t-widgets">Dashboard</span>
-                            </a>
-                        </li> <!-- end Dashboard Menu -->
-                        @can('view user')
-                        <li class="nav-item">
-                            <a class="nav-link menu-link {{ Request::is('admin/users') ? 'active':''}}" href="{{ route('users.index') }}">
-                                <i class="las la-user-circle"></i> <span data-key="t-widgets">Users</span>
-                            </a>
-                        </li>
-                        @endcan
-
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                                <i class="ri-pencil-ruler-2-line"></i> <span data-key="t-layouts">Setup</span>
-                            </a>
-                            <div class="collapse menu-dropdown {{ Request::is(['admin/roles','admin/roles/create','admin/permissions']) ? 'show':''}}" id="sidebarLayouts">
-                                <ul class="nav nav-sm flex-column">
-                                    @can('view role')
-                                        <li class="nav-item">
-                                            <a href="{{ route('roles.index') }}"class="nav-link {{ Request::is(['admin/roles','admin/roles/create']) ? 'active':''}}" data-key="t-two-column">Role</a>
-                                        </li>
-                                    @endcan
-                                    @can('view permission')
-                                        <li class="nav-item">
-                                            <a href="{{ route('permissions.index') }}" class="nav-link {{ Request::is(['admin/permissions','admin/permissions/create']) ? 'active':''}}" data-key="t-hovered">Permission</a>
-                                        </li>
-                                    @endcan
-                                </ul>
-                            </div>
-                        </li> <!-- end Dashboard Menu -->
-
-                        <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="widgets.html">
-                                <i class="ri-honour-line"></i> <span data-key="t-widgets">Widgets</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- Sidebar -->
-            </div>
-
-            <div class="sidebar-background"></div>
-        </div>
-        <!-- Left Sidebar End -->
-        <!-- Vertical Overlay-->
-        <div class="vertical-overlay"></div>
-
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        <div class="main-content">
-
-            <div class="page-content">
-                <div class="container-fluid">
-
-                    <!-- start page title -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-transparent">
-                                <h4 class="mb-sm-0">@yield('title')</h4>
-
-                                <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                        <li class="breadcrumb-item active">@yield('title')</li>
-                                    </ol>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end page title -->

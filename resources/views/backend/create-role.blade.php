@@ -1,7 +1,7 @@
 @extends('backend.layouts.main')
 
 @section('title', 'Create Roles')
-@section('main-section')
+@section('content')
 
 <div class="row">
     <div class="col-lg-12">
@@ -34,50 +34,29 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="row ms-1">
-                        @foreach($permissions as $permission)
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-header border-bottom-dashed">
-                                        <div class="row g-4 align-items-center">
-                                            <div class="col-sm">
-                                                @foreach($permission as $key=>$value)
-                                                <h4 class="card-title mb-0 flex-grow-1">
-                                                    @if($key <1)
-                                                    {{ucwords($value->prefix)}}
-                                                    @endif
-                                                </h4>
-                                                @endforeach
-                                            </div>
-                                            <div class="col-sm-auto">
-                                                <div class="d-flex flex-wrap align-items-start gap-2">
-                                                    <div class="form-check form-switch form-switch-md">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="checkall" >
-                                                        <label class="form-check-label" for="checkall">Select All</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                    <div class="row ms-1" data-masonry='{"percentPosition": true }'>
+                        @foreach ($groupedPermissions->chunk(1) as $chunks)
+                        <div class="col-md-3">
+                            <div class="card shadow-lg">
+                                @foreach ($chunks as $prefix => $permissions)
+                                    <span class="p-3">
+                                        <label class="fs-18 float-start" for="">{{ ucwords($prefix) }}</label>
+                                        <label class="float-end fs-15" for="prefix-checkbox-{{ $prefix }}">Select All</label>
+                                        <input type="checkbox" class="prefix-checkbox form-check-input mt-1 me-2 float-end" id="prefix-checkbox-{{$prefix }}" role="switch" data-prefix="{{ $prefix }}">
+                                    </span>
+                                    <ul>
+                                    @foreach($permissions as $permission)
+                                        <div>
+                                            <input type="checkbox" name="permissions[]" id="permission-checkbox-{{ $permission->id }}" value="{{ $permission->id }}" class="form-check-input permission-checkbox">
+                                            <label for="permission-checkbox-{{ $permission->id }}">{{ $permission->name }}</label>
                                         </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            @foreach($permission as $key=>$value)
-                                            <div class="col-6">
-                                            <!-- Custom Switches -->
-                                                <div class="form-check form-switch form-switch-md mb-3">
-                                                    <input class="form-check-input" name="permissions[]" value="{{ $value->id }}" type="checkbox" role="switch" id="Switch{{ $value->id }}" >
-                                                    <label class="form-check-label" for="Switch{{ $value->id }}">{{ $value->name }}</label>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                                
+                                    @endforeach
+                                    </ul>
+                                @endforeach
                             </div>
+                        </div>
                         @endforeach
-                    </div>
-                        
+                    </div>     
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Role Create</button>
                     </div>
@@ -89,5 +68,41 @@
     <!--end col-->
 </div>
 <!--end row-->
-
 @endsection
+@push('extra_js')
+<!-- validation init -->
+    <script src="{{ url('admin/assets/js/pages/form-validation.init.js') }}"></script>
+    <!-- Masonry plugin -->
+    <script src="{{ url('admin/assets/libs/masonry-layout/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ url('admin/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.prefix-checkbox').on('click', function() {
+                var prefix = $(this).data('prefix');
+                var permissionCheckboxes = $(this).closest('span').next('ul').find('.permission-checkbox');
+                var isChecked = $(this).prop('checked');
+
+                permissionCheckboxes.prop('checked', isChecked);
+            });
+
+            $('.permission-checkbox').on('click', function() {
+                var checkboxId = $(this).attr('id');
+                var prefix = $(this).closest('ul').prev('span').find('.prefix-checkbox');
+                var permissionCheckboxes = $(this).closest('ul').find('.permission-checkbox');
+                var isAllChecked = permissionCheckboxes.length === permissionCheckboxes.filter(':checked').length;
+
+                prefix.prop('checked', isAllChecked);
+            });
+
+            // Handle click event on text elements
+            $('label[for^="permission-checkbox-"]').on('click', function() {
+                var checkboxId = $(this).attr('for');
+                $('#' + checkboxId).prop('checked'); // Trigger the associated checkbox click event
+            });
+            $('label[for^="permission-checkbox-"]').on('click', function() {
+                var checkboxId = $(this).attr('for');
+                $('#' + checkboxId).prop('checked'); // Trigger the associated checkbox click event
+            });
+        });
+    </script>
+@endpush

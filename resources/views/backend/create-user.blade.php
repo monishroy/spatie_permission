@@ -1,8 +1,8 @@
 @extends('backend.layouts.main')
 
 @section('title', 'Create User')
-@section('main-section')
-                                             
+
+@section('content')                           
 <div class="row">
     <div class="col-lg-8 mx-auto">
         <div class="card" id="customerList">
@@ -23,17 +23,23 @@
                     @csrf
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">First name</label>
-                        <input type="text" class="form-control" name="fname" id="validationCustom01" placeholder="Enter First Name" required>
+                        <input type="text" class="form-control" name="first_name" id="validationCustom01" placeholder="Enter First Name" required>
                         <div class="invalid-feedback">
                             Please enter first name.
                         </div>
+                        @error('first_name')
+                            <span class="text-danger"><small>{{ $message }}</small></span>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Last name</label>
-                        <input type="text" class="form-control" name="lname" id="validationCustom02" placeholder="Enter Last Name" required>
+                        <input type="text" class="form-control" name="last_name" id="validationCustom02" placeholder="Enter Last Name" required>
                         <div class="invalid-feedback">
                             Please enter last name.
                         </div>
+                        @error('last_name')
+                            <span class="text-danger"><small>{{ $message }}</small></span>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom03" class="form-label">Email</label>
@@ -41,22 +47,30 @@
                         <div class="invalid-feedback">
                             Please enter email.
                         </div>
-                        
+                        @error('email')
+                            <span class="text-danger"><small>{{ $message }}</small></span>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="phone-field" class="form-label">Phone</label>
                         <input type="text" name="phone" id="phone-field" class="form-control" placeholder="Enter phone no." required />
                         <div class="invalid-feedback">Please enter a phone.</div>
+                        @error('phone')
+                            <span class="text-danger"><small>{{ $message }}</small></span>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="choices-single-default" class="form-label">Role select</label>
                         <select class="form-control" data-choices name="role" id="choices-single-default" required>
                             <option value="">Select Role</option>
                             @foreach ($roles as $role)
-                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                            <option value="{{ $role->id }}">{{ $role->name }}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback">Please select role.</div>
+                        @error('role')
+                            <span class="text-danger"><small>{{ $message }}</small></span>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="status-field" class="form-label">Status</label>
@@ -65,7 +79,10 @@
                             <option value="1">Active</option>
                             <option value="0">Block</option>
                         </select>
-                        <div class="invalid-feedback">Please enter a phone.</div>
+                        <div class="invalid-feedback">Please enter a status.</div>
+                        @error('status')
+                            <span class="text-danger"><small>{{ $message }}</small></span>
+                        @enderror
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
@@ -100,5 +117,10 @@
     <!--end col-->
 </div>
 <!--end row-->
-
 @endsection
+@push('extra_js')
+    <!-- validation init -->
+    <script src="{{ url('admin/assets/js/pages/form-validation.init.js') }}"></script>
+    <!-- password create init -->
+    <script src="{{ url('admin/assets/js/pages/passowrd-create.init.js') }}"></script>
+@endpush

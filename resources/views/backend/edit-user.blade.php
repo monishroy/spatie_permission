@@ -1,8 +1,8 @@
 @extends('backend.layouts.main')
 
 @section('title', 'Edit User')
-@section('main-section')
-                                             
+
+@section('content')                            
 <div class="row">
     <div class="col-lg-8 mx-auto">
         <div class="card" id="customerList">
@@ -62,7 +62,7 @@
                         <select class="form-control" data-choices name="role" id="choices-single-default" required>
                             <option value="">Select Role</option>
                             @foreach ($roles as $role)
-                            <option @if (in_array($role->id, $data)) selected @endif value="{{ $role->name }}">{{ $role->name }}</option>
+                            <option @if (in_array($role->id, $data)) selected @endif value="{{ $role->id }}">{{ $role->name }}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback">Please select role.</div>
@@ -117,3 +117,9 @@
 <!--end row-->
 
 @endsection
+@push('extra_js')
+    <!-- validation init -->
+    <script src="{{ url('admin/assets/js/pages/form-validation.init.js') }}"></script>
+    <!-- password create init -->
+    <script src="{{ url('admin/assets/js/pages/passowrd-create.init.js') }}"></script>
+@endpush

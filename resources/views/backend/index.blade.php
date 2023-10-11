@@ -1,7 +1,7 @@
 @extends('backend.layouts.main')
 
 @section('title', 'Dashboard')
-@section('main-section')
+@section('content')
     <div class="row">
         <div class="col">
 
@@ -347,4 +347,14 @@
 
     </div>
 @endsection
-                
+@push('extra_js')
+    <!-- apexcharts -->
+    <script src="{{ url('admin/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <!-- Vector map-->
+    <script src="{{ url('admin/assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
+    <script src="{{ url('admin/assets/libs/jsvectormap/maps/world-merc.js') }}"></script>
+    <!--Swiper slider js-->
+    <script src="{{ url('admin/assets/libs/swiper/swiper-bundle.min.js') }}"></script>
+    <!-- Dashboard init -->
+    <script src="{{ url('admin/assets/js/pages/dashboard-ecommerce.init.js') }}"></script>
+@endpush                 
